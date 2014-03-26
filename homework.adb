@@ -7,9 +7,9 @@ procedure homework is
   package ITO renames Ada.Integer_Text_IO;
   package SF renames Ada.Strings.Fixed;
   
-  Line: String(1..15) := (others => ' ');
-  Last: Integer;
-  Alice, Bob, Cheryl, Diane, Edgar, curDish, expectedDishes:	Integer := 0;
+  outerLine: String(1..15) := (others => ' ');
+  curDish: Integer := 0;
+  Alice, Bob, Cheryl, Diane, Edgar, expectedDishes:	Integer := 0;
   
   procedure checkLine(Input: String) is
     Line: String := Input;
@@ -50,18 +50,20 @@ procedure homework is
 begin
      
   get(expectedDishes);
---   loop
---     exit when curDish >= expectedDishes;
---     Get_Line(Line, Last);
---     checkLine(Line);
---     Line := (1..15 => ' ');
---     curDish := curDish + 1;
---   end loop;
---   
---   if alice >= 3 and bob >= 3 and Cheryl >= 3 and diane >= 3 and edgar >= 3 then
---     put_line("Satisfactory Meal");
---   else
---     put_line("Unsatisfactory Meal");
---   end if;
+  put(expectedDishes);
+  loop
+    exit when curDish >= expectedDishes;
+    Get(outerLine);
+    put_line(outerLine);
+    checkLine(outerLine);
+    outerLine := (1..15 => ' ');
+    curDish := curDish + 1;
+  end loop;
+  
+  if alice >= 3 and bob >= 3 and Cheryl >= 3 and diane >= 3 and edgar >= 3 then
+    put_line("Satisfactory Meal");
+  else
+    put_line("Unsatisfactory Meal");
+  end if;
      
 end homework;
