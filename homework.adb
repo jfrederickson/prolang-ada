@@ -43,18 +43,17 @@ procedure homework is
 	Edgar := Edgar + 1;
       end if;
       
-      put(Alice);
-      put(Bob);
     end;
   
 begin
      
   get(expectedDishes);
-  put(expectedDishes);
+--   put(expectedDishes);
   loop
     exit when curDish >= expectedDishes;
+    outerLine := (others => ' ');
     Get(outerLine);
-    put_line(outerLine);
+--     put_line(outerLine);
     checkLine(outerLine);
     outerLine := (1..15 => ' ');
     curDish := curDish + 1;
